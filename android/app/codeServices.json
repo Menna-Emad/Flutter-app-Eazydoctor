@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "321716060811",
+    "project_id": "eazydocktor",
+    "storage_bucket": "eazydocktor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321716060811:android:daef93e905b1c87314ca8e",
+        "android_client_info": {
+          "package_name": "com.example.eazyydoctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321716060811-lqo9jod5q78dv3pvbaijpc4ad39h7jb7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIpSGpRPwmgoVrDpciwXPvKjeCyied81I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321716060811-lqo9jod5q78dv3pvbaijpc4ad39h7jb7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
