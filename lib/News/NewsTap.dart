@@ -10,23 +10,25 @@ class NewsTap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder (
-        future: client.getArticle(),
-        builder: (BuildContext context, AsyncSnapshot<List<Articles>> snapshot){
-          if (snapshot.hasError){
-            print('errrrror ${snapshot.error.toString()}');
-            return Center(child: Text(snapshot.error.toString()));
-          }else if (snapshot.hasData){
-            List<Articles>? articles = snapshot.data;
-            return ListView.builder(itemCount: articles?.length,
-                itemBuilder: (context,index) =>
-                    customListTitle(articles![index], context)
-                );
-          }
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-        },
+      body: Container(decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/x1.0/news.png'),fit: BoxFit.cover)),
+        child: FutureBuilder (
+          future: client.getArticle(),
+          builder: (BuildContext context, AsyncSnapshot<List<Articles>> snapshot){
+            if (snapshot.hasError){
+              print('errrrror ${snapshot.error.toString()}');
+              return Center(child: Text(snapshot.error.toString()));
+            }else if (snapshot.hasData){
+              List<Articles>? articles = snapshot.data;
+              return ListView.builder(itemCount: articles?.length,
+                  itemBuilder: (context,index) =>
+                      customListTitle(articles![index], context)
+                  );
+            }
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+          },
+        ),
       ),
     );
   }

@@ -12,196 +12,187 @@ class SettingTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.ltr,
-      child: Stack(
-        children: [
-          Container(
-            // color:MyThemeData.primaryColor,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: ListView(
-                //crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
+      child: Drawer(
+        child: Container(color: MyThemeData.primaryColor.withOpacity(0.22),
+          // color:MyThemeData.primaryColor,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ListView(
+              //crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.person,
+                      color: MyThemeData.primaryColor,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Account',
+                      style: TextStyle(color: MyThemeData.drawerTextColor,
+                          fontSize: 22, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                Divider(
+                  height: 20,
+                  thickness: 1,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Navigator.pushNamed(context, Profile.routeName);
+                      },
+                      child: Container(
+                        child: Text(
+                          'My Profile',
+                          style: TextStyle(color: MyThemeData.drawerTextColor,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.normal,
+                              ),
+                        ),
+                      )),
+                ),
+                Divider(
+                  thickness: 1,
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ActiveReservation()));
+                      },
+                      child: Container(
+                        child: Text(
+                          'Active Booking',
+                          style: TextStyle(color: MyThemeData.drawerTextColor,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.normal,
+                              ),
+                        ),
+                      )),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Divider(
+                  thickness: 1,
+                ),
+                Container(
+                  child: Row(
                     children: [
                       Icon(
-                        Icons.person,
+                        Icons.language,
+                        color: MyThemeData.drawerTextColor,
+                      ),
+                      builAccountOption(context, 'language'),
+                    ],
+                  ),
+                ),
+                Divider(
+                  thickness: 1,
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: TextButton(
+                      onPressed: () {},
+                      child: Container(
+                        child: Row(
+                          children: [
+                            Text(
+                              'FAQ',
+                              style: TextStyle(color: MyThemeData.drawerTextColor,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.normal,),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Icon(
+                              Icons.mark_chat_read_outlined,
+                              color: MyThemeData.drawerTextColor,
+                            ),
+                          ],
+                        ),
+                      )),
+                ),
+                Divider(
+                  thickness: 1,
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: TextButton(
+                      onPressed: () {},
+                      child: Container(
+                        child: Row(
+                          children: [
+                            Text(
+                              'About US',
+                              style: TextStyle(color: MyThemeData.drawerTextColor,
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.normal,),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Icon(
+                              Icons.face,
+                              color: MyThemeData.drawerTextColor,
+                            ),
+                          ],
+                        ),
+                      )),
+                ),
+                Divider(
+                  thickness: 1,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                TextButton(
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut().then((value) {
+                      print("signed out");
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignInScreen()));
+                    });
+                  },
+                  child: Container(
+                      child: Row(
+                    children: [
+                      Icon(
+                        Icons.logout,
                         color: MyThemeData.primaryColor,
                       ),
                       SizedBox(
                         width: 10,
                       ),
                       Text(
-                        'Account',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
+                        'Logout',
+                        style: TextStyle(fontSize: 20.0, color: MyThemeData.drawerTextColor,),
                       ),
                     ],
-                  ),
-                  Divider(
-                    height: 20,
-                    thickness: 1,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    color: MyThemeData.primaryColor,
-                    child: TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          Navigator.pushNamed(context, Profile.routeName);
-                        },
-                        child: Container(
-                          child: Text(
-                            'My Profile',
-                            style: TextStyle(
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black),
-                          ),
-                        )),
-                  ),
-                  Divider(
-                    thickness: 1,
-                  ),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    color: MyThemeData.primaryColor,
-                    child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ActiveReservation()));
-                        },
-                        child: Container(
-                          child: Text(
-                            'Active Booking',
-                            style: TextStyle(
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black),
-                          ),
-                        )),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Divider(
-                    thickness: 1,
-                  ),
-                  Container(
-                    color: MyThemeData.primaryColor,
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.language,
-                          color: Colors.black,
-                        ),
-                        builAccountOption(context, 'language'),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    thickness: 1,
-                  ),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    color: MyThemeData.primaryColor,
-                    child: TextButton(
-                        onPressed: () {},
-                        child: Container(
-                          child: Row(
-                            children: [
-                              Text(
-                                'FAQ',
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.black),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Icon(
-                                Icons.mark_chat_read_outlined,
-                                color: Colors.black,
-                              ),
-                            ],
-                          ),
-                        )),
-                  ),
-                  Divider(
-                    thickness: 1,
-                  ),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    color: MyThemeData.primaryColor,
-                    child: TextButton(
-                        onPressed: () {},
-                        child: Container(
-                          child: Row(
-                            children: [
-                              Text(
-                                'About US',
-                                style: TextStyle(
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.black),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Icon(
-                                Icons.face,
-                                color: Colors.black,
-                              ),
-                            ],
-                          ),
-                        )),
-                  ),
-                  Divider(
-                    thickness: 1,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      FirebaseAuth.instance.signOut().then((value) {
-                        print("signed out");
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignInScreen()));
-                      });
-                    },
-                    child: Container(
-                        child: Row(
-                      children: [
-                        Icon(
-                          Icons.logout,
-                          color: MyThemeData.primaryColor,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'Logout',
-                          style: TextStyle(fontSize: 20.0, color: Colors.black),
-                        ),
-                      ],
-                    )),
-                  ),
-                ],
-              ),
+                  )),
+                ),
+              ],
             ),
-          )
-        ],
+          ),
+        ),
       ),
     );
   }

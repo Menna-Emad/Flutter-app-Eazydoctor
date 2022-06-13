@@ -15,79 +15,81 @@ class ResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //var resultPage = ModalRoute.of(context)!.settings.arguments as ResultPage;
-    return Scaffold(
-      appBar: AppBar(
+    return Scaffold(extendBodyBehindAppBar: true,
+      appBar: AppBar(backgroundColor: Colors.transparent,
         title: Text('BMI CALCULATOR'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(padding: EdgeInsets.all(10),
-            child: Center(
+      body: Container(decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/x1.0/bmi.png'),fit: BoxFit.cover,)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(padding: EdgeInsets.all(10),
+              child: Center(
 
-              child: Text(
-                'Your Result',style: TextStyle(fontSize: 40),
+                child: Text(
+                  'Your Result',style: TextStyle(fontSize: 40),
+                ),
               ),
             ),
-          ),
-          Expanded(
-            flex: 2,
-            child: ReusableCard(
-              colour: MyThemeData.primaryColor,
-              cardChild: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+            Expanded(
+              flex: 2,
+              child: ReusableCard(
+                colour: MyThemeData.cardColor,
+                cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
 
-                  Text(
-                    resultText.toUpperCase(),
-                    style: TextStyle(fontSize: 30),
+                    Text(
+                      resultText.toUpperCase(),
+                      style: TextStyle(fontSize: 30),
 
-                  ),
-                  Column(
-                    children:[Text('Your BMI',style: TextStyle(fontSize: 30),),
-            Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          bmiResult,
-                          style: TextStyle(fontSize: 45),
-                        ),Text('%',style: TextStyle(fontSize: 45),),
-                      ],
                     ),
-                ],  ),
-                  Text(
-                    interpretation,
-                    style: TextStyle(fontSize: 25),
-                    textAlign: TextAlign.center,
+                    Column(
+                      children:[Text('Your BMI',style: TextStyle(fontSize: 30),),
+              Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            bmiResult,
+                            style: TextStyle(fontSize: 45),
+                          ),Text('%',style: TextStyle(fontSize: 45),),
+                        ],
+                      ),
+                  ],  ),
+                    Text(
+                      interpretation,
+                      style: TextStyle(fontSize: 25),
+                      textAlign: TextAlign.center,
 
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Container(
+                child: Card(
+                  margin: EdgeInsets.all(5),
+                  color: Colors.yellowAccent.withOpacity(0.5),
+                  child: Center(
+                    child: Text('ReCalculate'),
                   ),
-                ],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+                margin: EdgeInsets.only(top: 30.0),
+                padding: EdgeInsets.only(bottom: 5.0),
+                height: 70.0,
               ),
             ),
-          ),
-          GestureDetector(
-            onTap: (){
-              Navigator.pop(context);
-            },
-            child: Container(
-              child: Card(
-                margin: EdgeInsets.all(5),
-                color: Colors.amber,
-                child: Center(
-                  child: Text('ReCalculate'),
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-              margin: EdgeInsets.only(top: 30.0),
-              padding: EdgeInsets.only(bottom: 5.0),
-              height: 70.0,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

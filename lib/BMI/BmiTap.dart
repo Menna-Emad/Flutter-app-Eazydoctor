@@ -17,126 +17,128 @@ class _BmiTapState extends State<BmiTap> {
   @override
   Widget build(BuildContext context) {
     return Directionality(textDirection: TextDirection.ltr,
-      child: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+      child: Container(decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/x1.0/bmi.png'),fit: BoxFit.cover)),
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
 
-                    radioButton('MAN', Colors.blue, 0),
-                    radioButton('WOMAN', Colors.pinkAccent, 1)
-                  ],
-                ),
-                Container(
+                      radioButton('MAN', Colors.blue, 0),
+                      radioButton('WOMAN', Colors.pinkAccent, 1)
+                    ],
+                  ),
+                  Container(
 
-                  height:150,
-                  width: 150,
-                  child: Card(color: MyThemeData.primaryColor,
-                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Height',style: TextStyle(fontSize: 25),),
+                    height:150,
+                    width: 150,
+                    child: Card(color: MyThemeData.cardColor,
+                      child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Height',style: TextStyle(fontSize: 25),),
 
 
-                        SliderTheme(data: SliderTheme.of(context).copyWith(
-                          activeTrackColor: Colors.white,
-                          thumbColor: MyThemeData.primaryColor,
-                          overlayColor: Colors.white,
-                          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                          overlayShape: RoundSliderThumbShape(enabledThumbRadius: 30.0),
-                        ), child: Slider(value: height.toDouble(),
-                            min:120.0,
-                            max: 220.0,
-                            onChanged: (double newvalue){
-                              setState(() {
-                                height=newvalue.round();
-                              });
-                            })),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.baseline,
-                          textBaseline: TextBaseline.alphabetic,
-                          children: [
-                            Text(height.toString(),style: TextStyle(fontSize: 30),),
-                            Text('cm'), ],
-                        ),
-                      ],
+                          SliderTheme(data: SliderTheme.of(context).copyWith(
+                            activeTrackColor: Colors.white,
+                            thumbColor: MyThemeData.primaryColor,
+                            overlayColor: Colors.white,
+                            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                            overlayShape: RoundSliderThumbShape(enabledThumbRadius: 30.0),
+                          ), child: Slider(value: height.toDouble(),
+                              min:120.0,
+                              max: 220.0,
+                              onChanged: (double newvalue){
+                                setState(() {
+                                  height=newvalue.round();
+                                });
+                              })),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Text(height.toString(),style: TextStyle(fontSize: 30),),
+                              Text('cm'), ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
 
-                    Container(
-                      height:150,
-                      width: 150,
-                      child: Card(color: MyThemeData.primaryColor,
-                        child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text('Weight',style:TextStyle(fontSize: 23),textAlign: TextAlign.left,),Text(weight.toString(),style: TextStyle(fontSize: 25),),
-                            Row(mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(onPressed: (){
-                                  setState(() {
-                                    if (weight>1)
-                                      weight--;
-                                  });
-                                }, icon: Icon(Icons.remove_circle_outline,size: 30,)),
-                                SizedBox(width: 10.0,),
-                                IconButton(onPressed: (){
-                                  setState(() {
-                                    weight++;
-                                  });
-                                }, icon: Icon(Icons.add_circle_outline,size: 30,)),
-                              ],
-                            ),
-                          ],),
+                      Container(
+                        height:150,
+                        width: 150,
+                        child: Card(color: MyThemeData.cardColor,
+                          child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text('Weight',style:TextStyle(fontSize: 23),textAlign: TextAlign.left,),Text(weight.toString(),style: TextStyle(fontSize: 25),),
+                              Row(mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(onPressed: (){
+                                    setState(() {
+                                      if (weight>1)
+                                        weight--;
+                                    });
+                                  }, icon: Icon(Icons.remove_circle_outline,size: 30,)),
+                                  SizedBox(width: 10.0,),
+                                  IconButton(onPressed: (){
+                                    setState(() {
+                                      weight++;
+                                    });
+                                  }, icon: Icon(Icons.add_circle_outline,size: 30,)),
+                                ],
+                              ),
+                            ],),
+                        ),
+
                       ),
 
-                    ),
+                      Container(
+                        height:150,
+                        width: 150,
+                        child: Card(color: MyThemeData.cardColor,
+                          child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text('Age',style: TextStyle(fontSize: 25),),Text(age.toString(),style: TextStyle(fontSize: 25),),
+                              Row(mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(onPressed: (){
+                                    setState(() {
+                                      if (age>1)age--;
+                                    });
 
-                    Container(
-                      height:150,
-                      width: 150,
-                      child: Card(color: MyThemeData.primaryColor,
-                        child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text('Age',style: TextStyle(fontSize: 25),),Text(age.toString(),style: TextStyle(fontSize: 25),),
-                            Row(mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(onPressed: (){
-                                  setState(() {
-                                    if (age>1)age--;
-                                  });
-
-                                }, icon: Icon(Icons.remove_circle_outline,size: 30,)),
-                                SizedBox(width: 10.0,),
-                                IconButton(onPressed: (){
-                                  setState(() {
-                                    age++;
-                                  });
-                                }, icon: Icon(Icons.add_circle_outline,size: 30,)),
-                              ],
-                            ),
-                          ],),
+                                  }, icon: Icon(Icons.remove_circle_outline,size: 30,)),
+                                  SizedBox(width: 10.0,),
+                                  IconButton(onPressed: (){
+                                    setState(() {
+                                      age++;
+                                    });
+                                  }, icon: Icon(Icons.add_circle_outline,size: 30,)),
+                                ],
+                              ),
+                            ],),
+                        ),
                       ),
-                    ),
 
-                  ],
-                ),
-                ElevatedButton(onPressed: (){
-                  CalculatorBrain calc =
-                  CalculatorBrain(height: height, weight:weight);
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ResultPage(bmiResult: calc.calculateBMI(), resultText: calc.getResult(), interpretation: calc.getInterpretation())));
-                },
-                    style:ElevatedButton.styleFrom(primary: MyThemeData.primaryColor),child: Text('Calculate'))
-              ],
-            ),
-          )
-        ],
+                    ],
+                  ),
+                  ElevatedButton(onPressed: (){
+                    CalculatorBrain calc =
+                    CalculatorBrain(height: height, weight:weight);
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ResultPage(bmiResult: calc.calculateBMI(), resultText: calc.getResult(), interpretation: calc.getInterpretation())));
+                  },
+                      style:ElevatedButton.styleFrom(primary: MyThemeData.cardColor),child: Text('Calculate'))
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

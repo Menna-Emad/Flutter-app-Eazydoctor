@@ -26,8 +26,8 @@ class _HomePageState extends State<HomePage> {
           backgroundColor:MyThemeData.primaryColor,
           elevation: 0.0,
         ),
-        body: Container(
-          color: Color(0xFFF6F8FC),
+        body: Container(decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/x1.0/medicine.png'),fit: BoxFit.cover,)),
+
           child: Column(
             children: <Widget>[
               Flexible(
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         ),
         floatingActionButton: FloatingActionButton(
           elevation: 4,
-          backgroundColor:MyThemeData.primaryColor,
+          backgroundColor:MyThemeData.primaryColor.withOpacity(0.65),
           child: Icon(
             Icons.add,
           ),
@@ -165,7 +165,6 @@ class BottomContainer extends StatelessWidget {
           );
         } else {
           return Container(
-            color: Color(0xFFF6F8FC),
             child: GridView.builder(
               padding: EdgeInsets.only(top: 12),
               gridDelegate:

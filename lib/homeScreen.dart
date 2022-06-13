@@ -24,20 +24,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Scaffold(
+        Scaffold(drawer: SettingTab(),
           appBar: AppBar(
-            leading: IconButton(
-              icon: Icon(
-                Icons.add_shopping_cart_rounded,
-              ),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SpecialistScreen()));
-              },
-            ),
-            backgroundColor: MyThemeData.primaryColor,
+
+            backgroundColor: MyThemeData.primaryColor.withOpacity(0.5),
             centerTitle: true,
             title: Text(
               'Eazy Doctor',
@@ -47,8 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           floatingActionButton: FloatingActionButton(
-            backgroundColor: MyThemeData.primaryColor,
-            child: Icon(Icons.settings),
+            backgroundColor: MyThemeData.primaryColor.withOpacity(0.75),
+            child: Icon(Icons.add_shopping_cart_rounded),
             onPressed: () {
               showSettingTap();
             },
@@ -57,10 +47,10 @@ class _HomeScreenState extends State<HomeScreen> {
               FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: Theme(
             data: Theme.of(context)
-                .copyWith(canvasColor: MyThemeData.primaryColor),
+                .copyWith(canvasColor: MyThemeData.primaryColor.withOpacity(0.5)),
             child: BottomAppBar(
               elevation: 0,
-              child: BottomNavigationBar(
+              child: BottomNavigationBar(elevation: 0,
                 onTap: (index) {
                   currentPage = index;
                   setState(() {});
@@ -109,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
     showModalBottomSheet(
         context: context,
         builder: (buildContext) {
-          return SettingTab();
+          return SpecialistScreen();
         });
   }
 }
