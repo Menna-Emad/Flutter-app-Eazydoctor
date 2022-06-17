@@ -1,9 +1,13 @@
-
+import 'package:eazyydoctor/themeData.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:eazyydoctor/auth/signUp.dart';
 import 'package:eazyydoctor/homeScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
 
 import '../SplashScreen.dart';
 import 'alert.dart';
@@ -66,7 +70,7 @@ class _LoginState extends State<Login> {
                 child: Column(
                   children: [
                     TextFormField(
-                      onSaved: (val) {
+                    onSaved: (val) {
                         myemail = val;
                       },
                       validator: (val) {
@@ -82,7 +86,7 @@ class _LoginState extends State<Login> {
                           prefixIcon: Icon(Icons.person),
                           hintText: "Email",
                           border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 1))),
+                              borderRadius: BorderRadius.circular(25))),
                     ),
                     SizedBox(height: 20),
                     TextFormField(
@@ -100,33 +104,22 @@ class _LoginState extends State<Login> {
                       },
                       obscureText: true,
                       decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.person),
+                          prefixIcon: Icon(Icons.lock),
                           hintText: "password",
                           border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 1))),
+                              borderRadius:BorderRadius.circular(25))),
                     ),
+
+SizedBox(
+  width: 5,height: 10,
+),
                     Container(
-                        margin: EdgeInsets.all(10),
-                        child: Row(
-                          children: [
-                            Text("if you havan't accout "),
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>SignUp()));
-                              },
-                              child: Text(
-                                "Click Here",
-                                style: TextStyle(color: Colors.blue),
-                              ),
-                            )
-                          ],
-                        )),
-                    Container(
-                        child: RaisedButton(
-                          textColor: Colors.white,
+                      width:300,
+                        height: 40,
+                        child: ElevatedButton(
+                          style:ElevatedButton.styleFrom(primary: MyThemeData.primaryColor.withOpacity(0.5),shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),),
                           onPressed: () async {
                             var user = await signIn();
                             if (user != null) {
@@ -140,7 +133,54 @@ class _LoginState extends State<Login> {
                             "Sign in",
                             style: Theme.of(context).textTheme.headline6,
                           ),
-                        ))
+                        )),
+SizedBox(height: 5,),
+                    Column(
+                      children: [
+
+                        Divider(color: Colors.grey,),Text(
+                            "or by"
+                        ),
+                      ],
+                    ),
+                        SizedBox.fromSize(
+                          size: Size(56, 56), // button width and height
+                          child: ClipOval(
+                            child: Material(
+                              color: Colors.white, // button color
+                              child: InkWell(
+                                splashColor: MyThemeData.primaryColor.withOpacity(0.5), // splash color
+                                onTap: () {}, // button pressed
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(FontAwesomeIcons.google), // icon
+                                    Text("Google"), // text
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                    Container(
+                        margin: EdgeInsets.all(10),
+                        child: Row(
+                          children: [
+                            Text("you havan't accout? "),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>SignUp()));
+                              },
+                              child: Text(
+                                "Register now",
+                                style: TextStyle(color: Colors.blue),
+                              ),
+                            )
+                          ],
+                        )),
                   ],
                 )),
           )
@@ -148,4 +188,15 @@ class _LoginState extends State<Login> {
       ),
     );
   }
+
+Future Login()async {
+  await GoogleSignInApi.login();
+  Navigator.push(context,MaterialPageRoute(
+      builder: (context) => SPscreen()));
+}
+}
+
+class GoogleSignInApi {
+  static final _googleSignIn=GoogleSignIn();
+  static Future <GoogleSignInAccount?>login()=> _googleSignIn.signIn();
 }
