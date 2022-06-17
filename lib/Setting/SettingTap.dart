@@ -7,13 +7,15 @@ import 'package:flutter/painting.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:eazyydoctor/screens/active_reservation.dart';
 
+import '../auth/signIn.dart';
+
 class SettingTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Drawer(
-        child: Container(color: MyThemeData.primaryColor.withOpacity(0.22),
+        child: Container(color: Colors.white,
           // color:MyThemeData.primaryColor,
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -169,7 +171,7 @@ class SettingTab extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SignInScreen()));
+                              builder: (context) =>Login()));
                     });
                   },
                   child: Container(

@@ -3,10 +3,19 @@ import 'package:eazyydoctor/News/customListTitle.dart';
 import 'package:eazyydoctor/News/NewsResponse.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:workmanager/workmanager.dart';
 
-class NewsTap extends StatelessWidget {
+class NewsTap extends StatefulWidget {
   static const String routename='news';
+
+  @override
+  State<NewsTap> createState() => _NewsTapState();
+}
+
+class _NewsTapState extends State<NewsTap> {
+
   ApiManager client = ApiManager();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

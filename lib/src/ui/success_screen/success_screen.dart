@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:eazyydoctor/src/ui/homepage/homepage.dart';
 import 'package:flutter/material.dart';
 class SuccessScreen extends StatefulWidget {
   @override
@@ -12,9 +13,8 @@ class _SuccessScreenState extends State<SuccessScreen> {
     Timer(
       Duration(milliseconds: 2200),
           () {
-        Navigator.popUntil(
-          context,
-          ModalRoute.withName('/'),
+            Navigator.pop(
+                context, MaterialPageRoute(builder: (context) =>HomePage()),
         );
       },
     );

@@ -3,12 +3,13 @@ import 'package:eazyydoctor/BMI/BmiTap.dart';
 import 'package:eazyydoctor/Emergency/EmergencyTap.dart';
 import 'package:eazyydoctor/News/NewsTap.dart';
 import 'package:eazyydoctor/Setting/SettingTap.dart';
-import 'package:eazyydoctor/src/ui/mainn.dart';
+
 import 'package:eazyydoctor/themeData.dart';
 import 'package:flutter/material.dart';
 import 'package:eazyydoctor/screens/specialist_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:eazyydoctor/constants.dart';
+import 'package:workmanager/workmanager.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home';
@@ -18,13 +19,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void initState() {
+    Workmanager().registerPeriodicTask(
+      "1",
+      "periodic Notification",
+      frequency: Duration(minutes: 5),
+    );
+
+    Workmanager().registerPeriodicTask(
+      "2",
+      "periodic Notification at day",
+      frequency: Duration(days: 1),
+    );
+    super.initState();
+  }
   int currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Scaffold(drawer: SettingTab(),
+        Scaffold(drawer: SettingTab(),extendBody: true,
           appBar: AppBar(
 
             backgroundColor: MyThemeData.primaryColor.withOpacity(0.5),
@@ -50,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 .copyWith(canvasColor: MyThemeData.primaryColor.withOpacity(0.5)),
             child: BottomAppBar(
               elevation: 0,
-              child: BottomNavigationBar(elevation: 0,
+              child: BottomNavigationBar(elevation: 0,backgroundColor: Colors.transparent,
                 onTap: (index) {
                   currentPage = index;
                   setState(() {});
@@ -88,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
     } else if (currentPage == 1) {
       return BmiTap();
     } else if (currentPage == 2) {
-      return MedicineReminder();
+      return HomePage();
     } else if (currentPage == 3) {
       return EmergencyTab();
     } else

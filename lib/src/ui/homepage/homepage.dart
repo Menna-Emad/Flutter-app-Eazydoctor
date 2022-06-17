@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../../global_bloc.dart';
 
 class HomePage extends StatefulWidget {
+  static const String routeName = 'reminderHome';
   @override
   _HomePageState createState() => _HomePageState();
 }

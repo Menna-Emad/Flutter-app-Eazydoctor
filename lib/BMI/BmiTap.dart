@@ -21,7 +21,7 @@ class _BmiTapState extends State<BmiTap> {
         child: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.fromLTRB(25.0, 10.0, 25.0, 75.0),
               child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [

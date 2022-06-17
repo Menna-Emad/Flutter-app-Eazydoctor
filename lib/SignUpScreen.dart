@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eazyydoctor/homeScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +69,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             password: passwordTextController.text)
                         .then((value) {
                       print('created New account');
+                      FirebaseFirestore.instance.collection("users").add(
+                          {
+                            'username' : userTextController,
+                            'email' : emailTextController
+                          });
                       Navigator.push(
                           context,
                           MaterialPageRoute(

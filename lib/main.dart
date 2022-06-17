@@ -4,7 +4,11 @@ import 'package:eazyydoctor/Emergency/national.dart';
 import 'package:eazyydoctor/Setting/Profile.dart';
 import 'package:eazyydoctor/SignInScreen.dart';
 import 'package:eazyydoctor/SignUpScreen.dart';
+import 'package:eazyydoctor/auth/signIn.dart';
+import 'package:eazyydoctor/auth/signUp.dart';
 import 'package:eazyydoctor/homeScreen.dart';
+import 'package:eazyydoctor/src/global_bloc.dart';
+import 'package:eazyydoctor/src/ui/homepage/homepage.dart';
 import 'package:eazyydoctor/themeData.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -34,11 +38,23 @@ void main() async {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+  late GlobalBloc globalBloc;
+  void initState() {
+    globalBloc = GlobalBloc();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return Provider<GlobalBloc>.value(
+    value: globalBloc,
+    child: MaterialApp(
       title: 'Eazy Doctor',
       theme: ThemeData(
         textTheme: GoogleFonts.almaraiTextTheme(Theme.of(context).textTheme),
@@ -67,8 +83,12 @@ class MyApp extends StatelessWidget {
         NatScreen.routeName: (buildContext) => NatScreen(),
         IdScreen.routeName: (buildContext) => IdScreen(),
         FileScreen.routeName: (buildContext) => FileScreen(),
+        HomePage.routeName: (buildContext) => HomePage(),
+        Login.routeName: (buildContext) => Login(),
+        SignUp.routeName: (buildContext) => SignUp(),
+
       },
-      initialRoute: SignInScreen.routeName,
+      initialRoute: Login.routeName,
       localizationsDelegates: [
         GlobalCupertinoLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -80,6 +100,6 @@ class MyApp extends StatelessWidget {
       ],
       locale: Locale("ar", "AE"),
       debugShowCheckedModeBanner: false,
-    );
+    ));
   }
 }

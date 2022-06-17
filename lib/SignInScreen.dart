@@ -1,5 +1,6 @@
 import 'package:eazyydoctor/ReusableTextField.dart';
 import 'package:eazyydoctor/SignUpScreen.dart';
+import 'package:eazyydoctor/SplashScreen.dart';
 import 'package:eazyydoctor/homeScreen.dart';
 import 'package:eazyydoctor/themeData.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -65,7 +66,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomeScreen()));
+                                builder: (context) =>SPscreen()));
                       }).onError((error, stackTrace) {
                         print("error ${error.toString()}");
                       });
@@ -133,7 +134,7 @@ class _SignInScreenState extends State<SignInScreen> {
   Future signIn() async {
     await GoogleSignInApi.login();
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        context, MaterialPageRoute(builder: (context) =>SPscreen()));
   }
 }
 

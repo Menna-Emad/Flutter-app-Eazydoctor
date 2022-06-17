@@ -1,6 +1,6 @@
+import 'package:eazyydoctor/homeScreen.dart';
 import 'package:eazyydoctor/src/models/medicine.dart';
 import 'package:eazyydoctor/src/ui/homepage/homepage.dart';
-import 'package:eazyydoctor/src/ui/mainn.dart';
 import 'package:eazyydoctor/src/ui/new_entry/new_entry.dart';
 import 'package:eazyydoctor/themeData.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +38,7 @@ class MedicineDetails extends StatelessWidget {
       ),
       body: Container(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.05),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -114,11 +114,8 @@ class MedicineDetails extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           _globalBloc.removeMedicine(medicine);
-                          Navigator.push(
-                            context,MaterialPageRoute(builder: (BuildContext context) {
-          return MedicineReminder();}
-                          //  ModalRoute.withName('/'),
-                          ) );
+                          Navigator.popAndPushNamed(
+                              context, 'reminderHome');
                         },
                         child: InkWell(
                           child: Container(
