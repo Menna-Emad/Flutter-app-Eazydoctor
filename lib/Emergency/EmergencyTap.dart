@@ -17,7 +17,7 @@ class EmergencyTab extends StatelessWidget {
               children: <Widget>[
                 // ignore: deprecated_member_use
                 SizedBox(),
-                Image.asset('assets/images/x1.0/hospital.jpg'),
+                Image.asset('assets/images/x1.0/emer.jpg'),
                 SizedBox(
                   height: 60,
                   width: double.infinity,

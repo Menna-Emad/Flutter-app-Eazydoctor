@@ -1,7 +1,9 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eazyydoctor/SplashScreen.dart';
 import 'package:eazyydoctor/auth/signIn.dart';
 import 'package:eazyydoctor/homeScreen.dart';
+import 'package:eazyydoctor/themeData.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -79,7 +81,7 @@ class _SignUpState extends State<SignUp> {
                         return null;
                       },
                       decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.person),
+                          prefixIcon: Icon(Icons.email),
                           hintText: "username",
                           border: OutlineInputBorder(
                               borderSide: BorderSide(width: 1))),
@@ -99,7 +101,7 @@ class _SignUpState extends State<SignUp> {
                         return null;
                       },
                       decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.person),
+                          prefixIcon: Icon(Icons.email),
                           hintText: "email",
                           border: OutlineInputBorder(
                               borderSide: BorderSide(width: 1))),
@@ -120,12 +122,41 @@ class _SignUpState extends State<SignUp> {
                       },
                       obscureText: true,
                       decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.person),
+                          prefixIcon: Icon(Icons.lock),
                           hintText: "password",
                           border: OutlineInputBorder(
                               borderSide: BorderSide(width: 1))),
                     ),
-                    Container(
+                    SizedBox(
+                      width: 5,height: 10,
+                    ),
+                    Container( width:300,
+                        height: 40,
+                        child: ElevatedButton(
+    style:ElevatedButton.styleFrom(primary: MyThemeData.primaryColor.withOpacity(0.5),shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(30.0),)),
+                          onPressed: () async {
+                            UserCredential response = await signUp();
+                            print("===================");
+                            if (response != null) {
+                              await FirebaseFirestore.instance
+                                  .collection("users")
+                                  .add({"username": myusername, "email": myemail});
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>SPscreen()));
+                            } else {
+                              print("Sign Up Faild");
+                            }
+                            print("===================");
+                          },
+                          child: Text(
+
+                            "Sign Up",
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
+                        )), Container(
                         margin: EdgeInsets.all(10),
                         child: Row(
                           children: [
@@ -144,30 +175,6 @@ class _SignUpState extends State<SignUp> {
                             )
                           ],
                         )),
-                    Container(
-                        child: RaisedButton(
-                          textColor: Colors.white,
-                          onPressed: () async {
-                            UserCredential response = await signUp();
-                            print("===================");
-                            if (response != null) {
-                              await FirebaseFirestore.instance
-                                  .collection("users")
-                                  .add({"username": myusername, "email": myemail});
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>HomeScreen()));
-                            } else {
-                              print("Sign Up Faild");
-                            }
-                            print("===================");
-                          },
-                          child: Text(
-                            "Sign Up",
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
-                        ))
                   ],
                 )),
           )

@@ -140,7 +140,12 @@ class MedicineDetails extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).pop();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(),
+                            ),
+                          );
                         },
                         child: InkWell(
                           child: Container(
@@ -233,7 +238,7 @@ class MainSection extends StatelessWidget {
     return Container(
       child: Row(
         children: <Widget>[
-          makeIcon(140),
+          makeIcon(110),
           SizedBox(
             width: 10,
           ),
