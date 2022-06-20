@@ -4,6 +4,7 @@ import 'package:eazyydoctor/Emergency/national.dart';
 import 'package:eazyydoctor/Setting/Profile.dart';
 import 'package:eazyydoctor/SignInScreen.dart';
 import 'package:eazyydoctor/SignUpScreen.dart';
+import 'package:eazyydoctor/animatedscreen.dart';
 import 'package:eazyydoctor/auth/signIn.dart';
 import 'package:eazyydoctor/auth/signUp.dart';
 import 'package:eazyydoctor/homeScreen.dart';
@@ -88,8 +89,9 @@ class _MyAppState extends State<MyApp> {
             HomePage.routeName: (buildContext) => HomePage(),
             Login.routeName: (buildContext) => Login(),
             SignUp.routeName: (buildContext) => SignUp(),
+            MyStatefulWidget.routeName: (buildContext) =>MyStatefulWidget(),
           },
-          initialRoute: Login.routeName,
+          initialRoute: MyStatefulWidget.routeName,
           localizationsDelegates: [
             GlobalCupertinoLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
