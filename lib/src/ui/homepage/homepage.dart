@@ -48,8 +48,10 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          elevation: 4,
+        floatingActionButton:Padding(
+    padding: const EdgeInsets.only(bottom: 70.0),child: FloatingActionButton(
+
+          elevation: 2,
           backgroundColor:MyThemeData.primaryColor.withOpacity(0.65),
           child: Icon(
             Icons.add,
@@ -62,7 +64,7 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           },
-        ),
+        ), ),
       ),
     );
   }

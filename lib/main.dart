@@ -4,6 +4,7 @@ import 'package:eazyydoctor/Emergency/national.dart';
 import 'package:eazyydoctor/Setting/Profile.dart';
 import 'package:eazyydoctor/SignInScreen.dart';
 import 'package:eazyydoctor/SignUpScreen.dart';
+import 'package:eazyydoctor/animatedscreen.dart';
 import 'package:eazyydoctor/auth/signIn.dart';
 import 'package:eazyydoctor/auth/signUp.dart';
 import 'package:eazyydoctor/homeScreen.dart';
@@ -50,56 +51,58 @@ class _MyAppState extends State<MyApp> {
     globalBloc = GlobalBloc();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Provider<GlobalBloc>.value(
-    value: globalBloc,
-    child: MaterialApp(
-      title: 'Eazy Doctor',
-      theme: ThemeData(
-        textTheme: GoogleFonts.almaraiTextTheme(Theme.of(context).textTheme),
-        primaryColor: MyThemeData.primaryColor,
-        inputDecorationTheme: InputDecorationTheme(
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
-            borderRadius: BorderRadius.circular(25),
+        value: globalBloc,
+        child: MaterialApp(
+          title: 'Eazy Doctor',
+          theme: ThemeData(
+            textTheme:
+                GoogleFonts.almaraiTextTheme(Theme.of(context).textTheme),
+            primaryColor: MyThemeData.primaryColor,
+            inputDecorationTheme: InputDecorationTheme(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey),
+                borderRadius: BorderRadius.circular(25),
+              ),
+              disabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey),
+                borderRadius: BorderRadius.circular(25),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey),
+                borderRadius: BorderRadius.circular(25),
+              ),
+            ),
           ),
-          disabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
-            borderRadius: BorderRadius.circular(25),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
-            borderRadius: BorderRadius.circular(25),
-          ),
-        ),
-      ),
-      routes: {
-        HomeScreen.routeName: (buildContext) => HomeScreen(),
-        Profile.routeName: (buildContext) => Profile(),
-        SignInScreen.routeName: (buildContext) => SignInScreen(),
-        SignUpScreen.routeName: (buildContext) => SignUpScreen(),
-        EmergencyTab.routeName: (buildContext) => EmergencyTab(),
-        NatScreen.routeName: (buildContext) => NatScreen(),
-        IdScreen.routeName: (buildContext) => IdScreen(),
-        FileScreen.routeName: (buildContext) => FileScreen(),
-        HomePage.routeName: (buildContext) => HomePage(),
-        Login.routeName: (buildContext) => Login(),
-        SignUp.routeName: (buildContext) => SignUp(),
-
-      },
-      initialRoute: Login.routeName,
-      localizationsDelegates: [
-        GlobalCupertinoLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: [
-        const Locale('ar', 'AE'),
-        const Locale('en', 'US'),
-      ],
-      locale: Locale("ar", "AE"),
-      debugShowCheckedModeBanner: false,
-    ));
+          routes: {
+            HomeScreen.routeName: (buildContext) => HomeScreen(),
+            Profile.routeName: (buildContext) => Profile(),
+            SignInScreen.routeName: (buildContext) => SignInScreen(),
+            SignUpScreen.routeName: (buildContext) => SignUpScreen(),
+            EmergencyTab.routeName: (buildContext) => EmergencyTab(),
+            NatScreen.routeName: (buildContext) => NatScreen(),
+            IdScreen.routeName: (buildContext) => IdScreen(),
+            FileScreen.routeName: (buildContext) => FileScreen(),
+            HomePage.routeName: (buildContext) => HomePage(),
+            Login.routeName: (buildContext) => Login(),
+            SignUp.routeName: (buildContext) => SignUp(),
+            MyStatefulWidget.routeName: (buildContext) =>MyStatefulWidget(),
+          },
+          initialRoute: MyStatefulWidget.routeName,
+          localizationsDelegates: [
+            GlobalCupertinoLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: [
+            const Locale('ar', 'AE'),
+            const Locale('en', 'US'),
+          ],
+          locale: Locale("ar", "AE"),
+          debugShowCheckedModeBanner: false,
+        ));
   }
 }
