@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:eazyydoctor/News/NewsTap.dart';
-import 'package:eazyydoctor/SignInScreen.dart';
+
 import 'package:eazyydoctor/homeScreen.dart';
 import 'package:eazyydoctor/tips.dart';
 import 'package:flutter/material.dart';

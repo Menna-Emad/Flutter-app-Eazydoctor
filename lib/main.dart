@@ -2,9 +2,7 @@ import 'package:eazyydoctor/Emergency/EmergencyTap.dart';
 import 'package:eazyydoctor/Emergency/id_screen.dart';
 import 'package:eazyydoctor/Emergency/national.dart';
 import 'package:eazyydoctor/Setting/Profile.dart';
-import 'package:eazyydoctor/SignInScreen.dart';
-import 'package:eazyydoctor/SignUpScreen.dart';
-import 'package:eazyydoctor/animatedscreen.dart';
+import 'package:eazyydoctor/startscreen.dart';
 import 'package:eazyydoctor/auth/signIn.dart';
 import 'package:eazyydoctor/auth/signUp.dart';
 import 'package:eazyydoctor/homeScreen.dart';
@@ -80,8 +78,6 @@ class _MyAppState extends State<MyApp> {
           routes: {
             HomeScreen.routeName: (buildContext) => HomeScreen(),
             Profile.routeName: (buildContext) => Profile(),
-            SignInScreen.routeName: (buildContext) => SignInScreen(),
-            SignUpScreen.routeName: (buildContext) => SignUpScreen(),
             EmergencyTab.routeName: (buildContext) => EmergencyTab(),
             NatScreen.routeName: (buildContext) => NatScreen(),
             IdScreen.routeName: (buildContext) => IdScreen(),
@@ -89,9 +85,9 @@ class _MyAppState extends State<MyApp> {
             HomePage.routeName: (buildContext) => HomePage(),
             Login.routeName: (buildContext) => Login(),
             SignUp.routeName: (buildContext) => SignUp(),
-            MyStatefulWidget.routeName: (buildContext) =>MyStatefulWidget(),
+            Startscreen.routeName: (buildContext) =>Startscreen(),
           },
-          initialRoute: MyStatefulWidget.routeName,
+          initialRoute: Startscreen.routeName,
           localizationsDelegates: [
             GlobalCupertinoLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,

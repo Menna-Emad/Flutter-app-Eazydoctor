@@ -1,5 +1,5 @@
 import 'package:eazyydoctor/Setting/Profile.dart';
-import 'package:eazyydoctor/SignInScreen.dart';
+
 import 'package:eazyydoctor/themeData.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
