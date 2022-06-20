@@ -1,3 +1,4 @@
+import 'package:eazyydoctor/themeData.dart';
 import 'package:flutter/material.dart';
 
 import 'id_screen.dart';
@@ -10,21 +11,21 @@ class EmergencyTab extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 170),
+          padding: const EdgeInsets.all(50.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 // ignore: deprecated_member_use
                 SizedBox(),
-                Image.asset('assets/images/x1.0/emer.jpg'),
+                Image.asset('assets/images/x1.0/hospital.jpg'),
                 SizedBox(
                   height: 60,
                   width: double.infinity,
                   // ignore: deprecated_member_use
                   child: RaisedButton(
 
-                    color: Colors.teal,
+                    color: MyThemeData.primaryColor,
 
                     onPressed: () {
                       Navigator.pushNamed(context, IdScreen.routeName);

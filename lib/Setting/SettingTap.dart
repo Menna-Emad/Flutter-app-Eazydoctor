@@ -1,4 +1,5 @@
 import 'package:eazyydoctor/Setting/Profile.dart';
+import 'package:eazyydoctor/Setting/aboutus.dart';
 
 import 'package:eazyydoctor/themeData.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -137,7 +138,12 @@ class SettingTab extends StatelessWidget {
                 Container(
                   alignment: Alignment.topLeft,
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Aboutus()));
+                      },
                       child: Container(
                         child: Row(
                           children: [

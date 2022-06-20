@@ -54,14 +54,14 @@ class _ProfileState extends State<Profile> {
         children: [
           Scaffold(
             appBar: AppBar(
-              backgroundColor: MyThemeData.primaryColor,
+              backgroundColor: MyThemeData.primaryColor.withOpacity(0.5),
               title: Text(
                 'profile patient',
                 style: TextStyle(color: Colors.white),
               ),
             ),
             body: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.all(30.0),
                 child: SingleChildScrollView(
                     child: Column(
                   children: [
