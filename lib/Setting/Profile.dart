@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eazyydoctor/auth/alert.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -8,9 +11,35 @@ class Profile extends StatefulWidget {
 
   @override
   _ProfileState createState() => _ProfileState();
+
 }
 
 class _ProfileState extends State<Profile> {
+  // ignore: non_constant_identifier_names
+  CollectionReference dataref = FirebaseFirestore.instance.collection("Data");
+  var fullName , Allergy, PreviousSurgeries ,BloodType,ImmuneDisease,OtherDiseases ;
+  
+  GlobalKey<FormState> formstate = new GlobalKey<FormState>();
+
+  Profile() async{
+var formdata = formstate.currentState;
+
+if (formdata!.validate()){
+showLoading(context);
+ formdata.save();
+ await dataref.add({
+   "name":fullName,
+   "blood type":BloodType,
+   "ImmuneDisease":ImmuneDisease,
+   "OtherDiseases":OtherDiseases,
+   "PreviousSurgeries":PreviousSurgeries,
+   "Allergy":Allergy,
+   "userid":FirebaseAuth.instance.currentUser!.uid,
+
+ });
+ Navigator.of(context).pushNamed("home");
+}
+  }
   TextEditingController dateinput = TextEditingController();
 
   @override
@@ -30,6 +59,7 @@ class _ProfileState extends State<Profile> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+
                   Image.asset(
                     'assets/images/x1.0/profile.png',
                     height: 200,
@@ -38,13 +68,31 @@ class _ProfileState extends State<Profile> {
                   SizedBox(
                     height: 1,
                   ),
-                  TextFormField(
+                  Form(
+                    key: formstate,
+                    child: Column(
+                      children: [
+
+                    TextFormField(
+                    validator: (val) {
+                      if (val!.length > 50) {
+                        return "name can't to be larger than 50 letter";
+                      }
+                      if (val.length < 4) {
+                        return "name can't to be less than 4 letter";
+                      }
+                      return null;
+                    },
+                    onSaved: (val) {
+                      fullName = val;
+                    },
                     decoration: InputDecoration(labelText: 'Full Name :'),
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   TextField(
+
                     controller:
                         dateinput, //editing controller of this TextField
                     decoration: InputDecoration(
@@ -58,7 +106,7 @@ class _ProfileState extends State<Profile> {
                           context: context,
                           initialDate: DateTime.now(),
                           firstDate: DateTime(
-                              2000), //DateTime.now() - not to allow to choose before today.
+                              1900), //DateTime.now() - not to allow to choose before today.
                           lastDate: DateTime(2101));
 
                       if (pickedDate != null) {
@@ -83,12 +131,27 @@ class _ProfileState extends State<Profile> {
                     height: 15,
                   ),
                   TextFormField(
+                    validator: (val) {
+                    if (val!.length > 3) {
+                      return "blood type can't to be larger than 3 letter";
+                    }
+                    if (val.length < 1) {
+                      return "blood type can't to be less than 1 letter";
+                    }
+                    return null;
+                  },
+                    onSaved: (val) {
+                      BloodType = val;
+                    },
                     decoration: InputDecoration(labelText: 'Your blood type:'),
                   ),
-                  SizedBox(
+                    SizedBox(
                     height: 15,
                   ),
-                  TextFormField(
+                    TextFormField(
+                    onSaved: (val) {
+                      ImmuneDisease = val;
+                    },
                     decoration:
                         InputDecoration(labelText: 'Your Immune Disease :'),
                   ),
@@ -96,12 +159,18 @@ class _ProfileState extends State<Profile> {
                     height: 15,
                   ),
                   TextFormField(
+                    onSaved: (val) {
+                      OtherDiseases = val;
+                    },
                     decoration: InputDecoration(labelText: 'Other Diseases :'),
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   TextFormField(
+                    onSaved: (val) {
+                      PreviousSurgeries = val;
+                    },
                     decoration:
                         InputDecoration(labelText: 'Your Previous Surgeries :'),
                   ),
@@ -109,6 +178,9 @@ class _ProfileState extends State<Profile> {
                     height: 15,
                   ),
                   TextFormField(
+                    onSaved: (val) {
+                      Allergy = val;
+                    },
                     decoration: InputDecoration(labelText: 'Your Allergy :'),
                   ),
                   SizedBox(
@@ -120,7 +192,9 @@ class _ProfileState extends State<Profile> {
                     // ignore: deprecated_member_use
                     child: RaisedButton(
                       color: MyThemeData.primaryColor,
-                      onPressed: () {},
+                      onPressed: () async{
+                        await Profile();
+                      },
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25)),
                       child: Text('Save Data',
@@ -129,7 +203,7 @@ class _ProfileState extends State<Profile> {
                   ),
                 ],
               ),
-            ),
+            ),],))
           ),
         ),
       ],
