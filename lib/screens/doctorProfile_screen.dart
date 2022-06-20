@@ -269,7 +269,7 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                                     Row(
                                       children: <Widget>[
                                         Container(
-                                          margin: EdgeInsets.only(right: 8),
+                                          margin: EdgeInsets.only(right: 20),
                                           height: 22,
                                           width: 22,
                                           child: Icon(
@@ -643,7 +643,7 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                                       children: <Widget>[
                                         Container(
                                           margin: EdgeInsets.only(
-                                            right: 8,
+                                            right: 40,
                                             top: 10,
                                           ),
                                           height: 22,

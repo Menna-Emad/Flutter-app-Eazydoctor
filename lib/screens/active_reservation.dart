@@ -67,16 +67,15 @@ class _ActiveReservationState extends State<ActiveReservation> {
                       itemCount: 1,
                       itemBuilder: (BuildContext context, int index) {
                         return (doctorsNotifier!.currentDoctors?.img == null)
-                            ? Column(
-                                // mainAxisAlignment: MainAxisAlignment.center,
-                                // crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Center(
-                                    child: Image.asset(
-                                      "assets/images/x1.0/nobookings.png",
-                                    ),
-                                  ),
-                                ],
+                            ? Container(
+                                height: 730,
+                                width: double.infinity,
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          "assets/images/x1.0/nobookings.png"),
+                                      fit: BoxFit.cover),
+                                ),
                               )
                             : InkWell(
                                 child: Column(

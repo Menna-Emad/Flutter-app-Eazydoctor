@@ -127,52 +127,53 @@ class _ReservationScreenState extends State<ReservationScreen> {
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 28.0),
-                                      child: Column(
-                                        children: <Widget>[
-                                          TextFormField(
-                                            keyboardType: TextInputType.name,
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                            textAlign: TextAlign.center,
-                                            onChanged: (value) {},
-                                            decoration: InputDecoration(
-                                              fillColor: Colors.black,
-                                              labelText: 'Full Name',
-                                              errorStyle: TextStyle(
-                                                color: Colors.red[700],
-                                              ),
-                                              labelStyle: TextStyle(
-                                                color: Colors.grey[800],
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 20.0,
-                                          ),
-                                          TextFormField(
-                                            keyboardType: TextInputType.number,
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                            textAlign: TextAlign.center,
-                                            onChanged: (value) {},
-                                            decoration: InputDecoration(
-                                              fillColor: Colors.black,
-                                              labelText: 'Mobile',
-                                              errorStyle: TextStyle(
-                                                color: Colors.red[700],
-                                              ),
-                                              labelStyle: TextStyle(
-                                                color: Colors.grey[800],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                      // child: Column(
+                                      //   children: <Widget>[
+                                      //     TextFormField(
+                                      //       keyboardType: TextInputType.name,
+                                      //       style:
+                                      //           TextStyle(color: Colors.black),
+                                      //       textAlign: TextAlign.center,
+                                      //       onChanged: (value) {},
+                                      //       decoration: InputDecoration(
+                                      //         fillColor: Colors.black,
+                                      //         labelText: 'Full Name',
+                                      //         errorStyle: TextStyle(
+                                      //           color: Colors.red[700],
+                                      //         ),
+                                      //         labelStyle: TextStyle(
+                                      //           color: Colors.grey[800],
+                                      //         ),
+                                      //       ),
+                                      //     ),
+                                      //     SizedBox(
+                                      //       height: 20.0,
+                                      //     ),
+                                      //     TextFormField(
+                                      //       keyboardType: TextInputType.number,
+                                      //       style:
+                                      //           TextStyle(color: Colors.black),
+                                      //       textAlign: TextAlign.center,
+                                      //       onChanged: (value) {},
+                                      //       decoration: InputDecoration(
+                                      //         fillColor: Colors.black,
+                                      //         labelText: 'Mobile',
+                                      //         errorStyle: TextStyle(
+                                      //           color: Colors.red[700],
+                                      //         ),
+                                      //         labelStyle: TextStyle(
+                                      //           color: Colors.grey[800],
+                                      //         ),
+                                      //       ),
+                                      //     ),
+                                      //   ],
+                                      // ),
                                     ),
                                     Row(
                                       children: <Widget>[
                                         Container(
-                                          margin: EdgeInsets.only(top: 10),
+                                          margin:
+                                              EdgeInsets.fromLTRB(0, 10, 24, 0),
                                           height: 50,
                                           width: 50,
                                           child: Icon(
@@ -200,7 +201,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
                                                 ),
                                               ),
                                               SizedBox(
-                                                width: 130,
+                                                width: 100,
                                               ),
                                               Text(
                                                 doctorsNotifier
@@ -226,7 +227,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
                                     Row(
                                       children: <Widget>[
                                         Container(
-                                          margin: EdgeInsets.only(right: 5),
+                                          margin: EdgeInsets.only(right: 40),
                                           height: 22,
                                           width: 22,
                                           child: Icon(
@@ -265,7 +266,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
                                     Row(
                                       children: <Widget>[
                                         Container(
-                                          margin: EdgeInsets.only(right: 20),
+                                          margin: EdgeInsets.only(right: 30),
                                           height: 22,
                                           width: 22,
                                           child: Icon(
@@ -296,7 +297,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
                                                 height: 5,
                                               ),
                                               Text(
-                                                'الثلاثاء 21 ديسمبر',
+                                                'الدخول بأسبقية الحجز',
                                                 style: GoogleFonts.almarai(
                                                   textStyle: textCard,
                                                   fontSize: 16,
