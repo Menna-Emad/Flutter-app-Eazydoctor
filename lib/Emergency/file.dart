@@ -11,7 +11,16 @@ class FileScreen extends StatefulWidget {
 
 }
 class _FileScreenState extends  State<FileScreen>{
-  CollectionReference emergencyref = FirebaseFirestore.instance.collection("emergency");
+  getData() async{
+    CollectionReference Inforef = FirebaseFirestore.instance.collection("emergency");
+    QuerySnapshot querySnapshot = await Inforef.get();
+
+    List<QueryDocumentSnapshot<Object?>> listdocs = querySnapshot.docs;
+    listdocs.forEach((element) {
+      print(element.data());
+
+    });
+  }
 
   @override
   Widget build(BuildContext context){
@@ -19,7 +28,7 @@ class _FileScreenState extends  State<FileScreen>{
         body: Stack(
           children: <Widget> [
             Center(
-                child: Column(
+                child:Column(
                   children: <Widget > [
                     SizedBox(height: 80,),
                     Text('Profile Patient',style: TextStyle(
@@ -35,23 +44,6 @@ class _FileScreenState extends  State<FileScreen>{
 
                 ),
               ),
-              FutureBuilder(
-             future:FirebaseFirestore.instance.collection("emergency").doc("12345678901234").get(),
-                builder: (context,AsyncSnapshot snapshot){
-                  if(snapshot.hasData){
-                      return Text(snapshot.data.toString());
-
-
-                   }
-                   else
-                     {
-                        return Container();
-                     }
-                 },
-
-    ) ,
-
-
         ],
 
         )

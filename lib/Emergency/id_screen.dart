@@ -64,7 +64,7 @@ class _IdScreenState  extends State<IdScreen>{
                                 ),
                               ),
                               Image.asset(
-                                'assets/images/x1.0/medicalgc.png',
+                                'assets/images/x1.0/medical.png',
                                 height: 180,
                                 width: 180,
                               ),

@@ -14,7 +14,7 @@ class NatScreen extends StatefulWidget {
 }
 class _NatScreenState extends State<NatScreen>{
  // static const String routeName = 'Nat_screen';
-final Stream< QuerySnapshot > users =FirebaseFirestore;
+
 
   var id;
   GlobalKey<FormState> formstate = new GlobalKey<FormState>();
@@ -31,6 +31,7 @@ final Stream< QuerySnapshot > users =FirebaseFirestore;
       child: Scaffold(
         body:Padding(
     padding: const EdgeInsets.symmetric(horizontal: 30),
+
          child:SingleChildScrollView(
           child: Column(
             children: <Widget>[
