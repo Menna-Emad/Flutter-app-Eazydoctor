@@ -11,6 +11,7 @@ import 'package:eazyydoctor/screens/active_reservation.dart';
 import '../auth/signIn.dart';
 
 class SettingTab extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -26,6 +27,18 @@ class SettingTab extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
+                Row(
+                  children: [Icon(
+                    Icons.settings,
+                    color: MyThemeData.primaryColor,size: 35,
+                  ), SizedBox(
+                    width: 10,
+                  ),
+                    Text('Settings', style: TextStyle(color: Colors.black,
+                        fontSize: 30, fontWeight: FontWeight.bold),),
+                  ],
+                ),SizedBox(height: 20,),
+
                 Row(
                   children: [
                     Icon(
@@ -108,33 +121,7 @@ class SettingTab extends StatelessWidget {
                 Divider(
                   thickness: 1,
                 ),
-                Container(
-                  alignment: Alignment.topLeft,
-                  child: TextButton(
-                      onPressed: () {},
-                      child: Container(
-                        child: Row(
-                          children: [
-                            Text(
-                              'FAQ',
-                              style: TextStyle(color: MyThemeData.drawerTextColor,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.normal,),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Icon(
-                              Icons.mark_chat_read_outlined,
-                              color: MyThemeData.drawerTextColor,
-                            ),
-                          ],
-                        ),
-                      )),
-                ),
-                Divider(
-                  thickness: 1,
-                ),
+
                 Container(
                   alignment: Alignment.topLeft,
                   child: TextButton(

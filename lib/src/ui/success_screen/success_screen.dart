@@ -27,7 +27,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
         child: Container(
           child: Center(
             child: Image.asset(
-              "assets/logo/register.jpg",
+              "assets/images/x1.0/done.png",
               alignment: Alignment.center,
               fit: BoxFit.contain,
             ),
