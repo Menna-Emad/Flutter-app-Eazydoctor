@@ -1,7 +1,7 @@
 import 'package:eazyydoctor/Emergency/EmergencyTap.dart';
-import 'package:eazyydoctor/Emergency/data.dart';
 import 'package:eazyydoctor/Emergency/id_screen.dart';
 import 'package:eazyydoctor/Emergency/national.dart';
+import 'package:eazyydoctor/Setting/data.dart';
 import 'package:eazyydoctor/Setting/Profile.dart';
 import 'package:eazyydoctor/startscreen.dart';
 import 'package:eazyydoctor/auth/signIn.dart';
