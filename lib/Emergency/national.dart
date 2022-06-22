@@ -13,8 +13,7 @@ class NatScreen extends StatefulWidget {
 
 }
 class _NatScreenState extends State<NatScreen>{
- // static const String routeName = 'Nat_screen';
-
+  // static const String routeName = 'Nat_screen';
 
   var id;
   GlobalKey<FormState> formstate = new GlobalKey<FormState>();
@@ -22,106 +21,104 @@ class _NatScreenState extends State<NatScreen>{
     var formdata = formstate.currentState;
 
     if (formdata!.validate()){
-
+      Navigator.of(context).pushNamed("dataScreen");
     }
+
   }
   @override
   Widget build(BuildContext context) {
     return Directionality( textDirection: TextDirection.ltr,
       child: Scaffold(
         body:Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
 
-         child:SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              (
-                 Stack(
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.5,
-                      decoration: BoxDecoration(
-                        //color: Colors.teal,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(50),
-                          bottomRight: Radius.circular(50),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 55),
-
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 100,
-                          ),
-                          Text(
-                            'Emergency',
-                            style: TextStyle(
-                              color: MyThemeData.primaryColor,
-                              fontSize: 35,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 1.3,
+          child:SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                (
+                    Stack(
+                      children: [
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.5,
+                          decoration: BoxDecoration(
+                            //color: Colors.teal,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(50),
+                              bottomRight: Radius.circular(50),
                             ),
                           ),
-                          Image.asset(
-                            'assets/images/x1.0/idcard.png',
-                            height: 180,
-                            width: 180,
-                          ),
-                          SizedBox(
-                            height: 110,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                )
-              ),
-              Form(
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 55),
 
-                key: formstate,
-                child: TextFormField(  validator: (val) {
-                  if (val!.length > 14) {
-                    return "enter the national ID";
-                  }
-                  if (val.length < 14) {
-                    return "enter the national ID";
-                  }
-                  return null;
-                },
-                onSaved: (val) {
-                  id = val;
-                  },
-                  decoration: InputDecoration(labelText: 'Enter The National ID'),
-                  obscureText: true,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 100,
+                              ),
+                              Text(
+                                'Emergency',
+                                style: TextStyle(
+                                  color: MyThemeData.primaryColor,
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 1.3,
+                                ),
+                              ),
+                              Image.asset(
+                                'assets/images/x1.0/idcard.png',
+                                height: 180,
+                                width: 180,
+                              ),
+                              SizedBox(
+                                height: 110,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    )
+                ),
+                Form(
 
-                ),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              SizedBox(
-                height: 60,
-                width: 200,
-                // ignore: deprecated_member_use
-                child: RaisedButton(
-                  color: MyThemeData.primaryColor,
-                  onPressed: () async {
-                    await NatScreen();
-                    Navigator.pushNamed(context, FileScreen.routeName);
+                  key: formstate,
+                  child: TextFormField(  validator: (val) {
+                    if (val!= "29812200101323") {
+                      return "enter the Correct Identity ID";
+                    }
+                    return null;
                   },
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40)),
-                  child: Text('View Profile',
-                      style: TextStyle(color: Colors.white, fontSize: 18.5)),
+                    onSaved: (val) {
+                      id = val;
+                    },
+                    decoration: InputDecoration(labelText: 'Enter the Identity ID'),
+                    obscureText: true,
+
+                  ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: 40,
+                ),
+                SizedBox(
+                  height: 60,
+                  width: 200,
+                  // ignore: deprecated_member_use
+                  child: RaisedButton(
+                    color: MyThemeData.primaryColor,
+                    onPressed: () async {
+                      await NatScreen();
+
+                    },
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40)),
+                    child: Text('View Profile',
+                        style: TextStyle(color: Colors.white, fontSize: 18.5)),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ),),
+        ),),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:eazyydoctor/Emergency/EmergencyTap.dart';
+import 'package:eazyydoctor/Emergency/data.dart';
 import 'package:eazyydoctor/Emergency/id_screen.dart';
 import 'package:eazyydoctor/Emergency/national.dart';
 import 'package:eazyydoctor/Setting/Profile.dart';
@@ -58,7 +59,7 @@ class _MyAppState extends State<MyApp> {
           title: 'Eazy Doctor',
           theme: ThemeData(
             textTheme:
-                GoogleFonts.almaraiTextTheme(Theme.of(context).textTheme),
+            GoogleFonts.almaraiTextTheme(Theme.of(context).textTheme),
             primaryColor: MyThemeData.primaryColor,
             inputDecorationTheme: InputDecorationTheme(
               enabledBorder: OutlineInputBorder(
@@ -82,10 +83,12 @@ class _MyAppState extends State<MyApp> {
             NatScreen.routeName: (buildContext) => NatScreen(),
             IdScreen.routeName: (buildContext) => IdScreen(),
             FileScreen.routeName: (buildContext) => FileScreen(),
+            dataScreen.routeName: (buildContext) => dataScreen(),
             HomePage.routeName: (buildContext) => HomePage(),
             Login.routeName: (buildContext) => Login(),
             SignUp.routeName: (buildContext) => SignUp(),
             Startscreen.routeName: (buildContext) =>Startscreen(),
+
           },
           initialRoute: Startscreen.routeName,
           localizationsDelegates: [

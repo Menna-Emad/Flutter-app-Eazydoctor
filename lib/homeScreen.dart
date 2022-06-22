@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
           floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
+          FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: Theme(
             data: Theme.of(context)
                 .copyWith(canvasColor: MyThemeData.primaryColor.withOpacity(0.5)),
@@ -72,9 +72,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 currentIndex: currentPage,
                 selectedIconTheme:
-                    IconThemeData(color: MyThemeData.selectedColor),
+                IconThemeData(color: MyThemeData.selectedColor),
                 unselectedIconTheme:
-                    IconThemeData(color: MyThemeData.unselectedColor),
+                IconThemeData(color: MyThemeData.unselectedColor),
                 items: [
                   BottomNavigationBarItem(
                       label: 'Home', icon: Icon(Icons.home_outlined)),
